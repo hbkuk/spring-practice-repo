@@ -30,7 +30,7 @@ public class BoardDAOSpring extends JdbcDaoSupport{
 	
 	public void insertBoard(BoardVO vo) {
 		System.out.println("====> JDBC로 insertBoard() 기능 처리");
-		getJdbcTemplate().update(BOARD_INSERT, vo.getTitle(), vo.getWriter(), vo.getContent());
+		getJdbcTemplate().update(BOARD_INSERT,vo.getTitle(), vo.getWriter(), vo.getContent());
 	}
 	
 	public void updateBoard(BoardVO vo) {
