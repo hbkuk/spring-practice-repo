@@ -4,10 +4,7 @@
 <%@page contentType="text/html; charset=EUC-KR"%>
 
 <%
-	BoardVO vo = new BoardVO();
-	BoardDAO boardDao = new BoardDAO();
-	
-	List<BoardVO> boardList = boardDao.getBoardList(vo);
+	List<BoardVO> boardList = (List) session.getAttribute("boardList");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 						"html://www.w3.org/TR/html14/loose.dtd">
@@ -19,7 +16,7 @@
 <body>
 <center>
 <h1>글 목록</h1>
-<h3>테스트님 환영합니다...<a href="logout_proc.jsp"></a></h3>
+<h3>테스트님 환영합니다...<a href="logout.do">Log-Out</a></h3>
 
 <!-- 검색 시작 -->
 <form action="getBoardList.jsp" method="post">
@@ -50,7 +47,7 @@
 <% for(BoardVO board : boardList ) { %>
 	<tr>
 		<th><%= board.getSeq() %></th>
-		<th align="left"><a href="getBoard.jsp?seq=<%= board.getSeq()%>"><%= board.getTitle() %></a></th>
+		<th align="left"><a href="getBoard.do?seq=<%= board.getSeq()%>"><%= board.getTitle() %></a></th>
 		<th><%= board.getWriter() %></th>
 		<th><%= board.getRegDate() %></th>
 		<th><%= board.getCnt() %></th>
