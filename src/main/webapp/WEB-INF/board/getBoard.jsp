@@ -11,7 +11,7 @@
 <body>
 <center>
 <h1>±Û »ó¼¼</h1>
-<a href="logout_proc.jsp">Log-Out</a>
+<a href="logout.do">Log-Out</a>
 <hr>
 <form action="updateBoard.do" method="post">
 <input name="seq" type="hidden" value="${board.seq}"/>
