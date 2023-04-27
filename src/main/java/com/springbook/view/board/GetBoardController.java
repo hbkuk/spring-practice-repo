@@ -1,31 +1,20 @@
 package com.springbook.view.board;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
-public class GetBoardController implements Controller {
+@Controller
+public class GetBoardController{
 
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("글 상세 조회");
-		
-		String seq = request.getParameter("seq");
-		
-		BoardVO vo = new BoardVO();
-		vo.setSeq(Integer.parseInt(seq));
-		
-		BoardDAO boardDAO = new BoardDAO();
+	@RequestMapping("/getBoard.do")
+	public ModelAndView handleRequest(BoardVO vo, BoardDAO boardDAO, ModelAndView mav) {
 		BoardVO board = boardDAO.getBoard(vo);
-		
-		ModelAndView mav = new ModelAndView();
 		mav.addObject("board", board);
-		mav.setViewName("getBoard");
+		mav.setViewName("getBoard.jsp");
 		return mav;
 	}
 
