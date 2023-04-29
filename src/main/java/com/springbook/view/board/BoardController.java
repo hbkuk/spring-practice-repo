@@ -20,6 +20,14 @@ public class BoardController {
 	
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, BoardDAO boardDao, Model model ) {
+		// NULL 체크
+		if( vo.getSearchCondition() == null ) 
+			vo.setSearchCondition("TITLE");
+		
+		if( vo.getSearchKeyword() == null ) 
+			vo.setSearchKeyword("");
+		
+		// Model 정보 저장
 		model.addAttribute("boardList", boardService.getBoardList(vo));
 		return "getBoardList.jsp";
 	}
