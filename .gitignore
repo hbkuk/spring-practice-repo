@@ -57,3 +57,4 @@ $RECYCLE.BIN/
 database.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,java
+src/main/resources/db.properties
