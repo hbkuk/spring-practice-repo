@@ -12,7 +12,7 @@ public class BoardServiceClient {
 		AbstractApplicationContext container =
 				new GenericXmlApplicationContext("applicationContext.xml");
 		
-		BoardService boardService = (BoardService) container.getBean("boardSerivce");
+		BoardService boardService = (BoardService) container.getBean("boardService");
 		
 		BoardVO vo = new BoardVO();
 		vo.setTitle("임시 제목");
