@@ -40,12 +40,15 @@
 	</select>
 	
 	<select id="getBoardList" resultType="board">
-		<![CDATA[
-			SELECT * FROM board 
-			WHERE title LIKE '%'||#{searchKeyword}||'%' 
-			ORDER BY seq DESC
-		]]>
+		SELECT * FROM board
+		WHERE 1 = 1
+		<if test="searchCondition == 'TITLE'">
+			AND title LIKE '%'||#{searchKeyword}||'%'		
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			AND content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY seq DESC
 	</select>
-
 
 </mapper>
